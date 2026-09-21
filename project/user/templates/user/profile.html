@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<h1>Mening profilim</h1>
+<p>Username: {{ user.username }}</p>
+<p>Ism: {{ user.first_name }}</p>
+<p>Familiya: {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Telefon: {{ user.phone }}</p><br>
+<a href="{% url 'advertisements' %}">Ortga</a>
+</body>
+</html>

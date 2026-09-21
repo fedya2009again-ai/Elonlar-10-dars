@@ -1,0 +1,10 @@
+<h1>E'lonni o'chirish</h1>
+
+<p>{{ ad.title }} e'lonini o'chirmoqchimisiz?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Ha, o'chirish</button>
+</form>
+
+<a href="{% url 'advertisements' %}">Yo'q, ortga</a>

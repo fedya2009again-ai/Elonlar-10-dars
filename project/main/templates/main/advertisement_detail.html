@@ -1,0 +1,17 @@
+<h1>{{ ad.title }}</h1>
+
+<p>{{ ad.description }}</p>
+<p>Narxi: {{ ad.price }}</p>
+<p>Egasi: {{ ad.owner.username }}</p>
+
+<a href="{% url 'to_cart' ad.id 'add' %}">🛒 Savatga qo'shish</a>
+{% if ad.image %}
+<img src="{{ ad.image.url }}" width="300">
+{% endif %}
+{% if user == ad.owner or user.is_superuser %}
+<a href="{% url 'edit_advertisement' ad.id %}">Tahrirlash</a>
+<a href="{% url 'delete_advertisement' ad.id %}">O'chirish</a>
+{% endif %}
+
+<br>
+<a href="{% url 'advertisements' %}">Ortga</a>

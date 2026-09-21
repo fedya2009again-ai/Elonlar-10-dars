@@ -1,0 +1,15 @@
+<h1>E'lonni tahrirlash</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{ ad.title }}">
+    <br>
+    <textarea name="description">{{ ad.description }}</textarea>
+    <br>
+    <input type="number" name="price" value="{{ ad.price }}">
+    <br>
+    <input type="file" name="image">
+    <br>
+    <button type="submit">Saqlash</button>
+</form>
+<a href="{% url 'advertisements' %}">Home</a>

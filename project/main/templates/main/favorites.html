@@ -1,0 +1,20 @@
+<h1>Mening saqlangan e'lonlarim</h1>
+
+<a href="{% url 'advertisements' %}">Barcha e'lonlar</a>
+
+{% for ad in ads %}
+<h2>{{ ad.title }}</h2>
+<p>{{ ad.price }}</p>
+<p>{{ ad.owner.username }}</p>
+
+{% if ad.image %}
+<img src="{{ ad.image.url }}" width="200">
+{% endif %}
+
+<a href="{% url 'advertisement_detail' ad.id %}">Batafsil</a>
+<a href="{% url 'favorite_advertisement' ad.id %}">★ Saqlangan</a>
+
+<hr>
+{% empty %}
+<p>Hozircha saqlangan e'lonlar yo'q.</p>
+{% endfor %}

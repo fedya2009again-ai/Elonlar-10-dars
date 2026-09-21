@@ -1,0 +1,23 @@
+<h1>Buyurtmalarim</h1>
+<a href="{% url 'advertisements' %}">← E'lonlar</a>
+<a href="{% url 'cart' %}">Savatcha</a>
+<hr>
+
+{% for order in orders %}
+<h3>Buyurtma #{{ order.id }} — {{ order.get_status_display }}</h3>
+<p>Sana: {{ order.created|date:"d.m.Y H:i" }}</p>
+<p>Manzil: {{ order.address }}</p>
+{% for item in order.items.all %}
+<p>{{ item.product.title }} — {{ item.quantity }} ta</p>
+{% endfor %}
+<p>Summa: {{ order.price }}</p>
+{% if order.status == "jar" %}
+<form method="post" action="{% url 'cancel_order' order.id %}">
+    {% csrf_token %}
+    <button type="submit">Bekor qilish</button>
+</form>
+{% endif %}
+<hr>
+{% empty %}
+<p>Hali buyurtmalar yo'q</p>
+{% endfor %}

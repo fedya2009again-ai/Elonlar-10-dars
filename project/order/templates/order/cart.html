@@ -1,0 +1,24 @@
+<h1>Savatcha</h1>
+<a href="{% url 'advertisements' %}">← E'lonlar</a>
+<a href="{% url 'orders' %}">Buyurtmalarim</a>
+<hr>
+
+{% for item in items %}
+<h3>{{ item.product.title }}</h3>
+<p>Narxi: {{ item.product.price }}</p>
+<p>
+    <a href="{% url 'to_cart' item.product.id 'delete' %}">−</a>
+    {{ item.quantity }}
+    <a href="{% url 'to_cart' item.product.id 'add' %}">+</a>
+</p>
+<p>Jami: {{ item.get_price }}</p>
+<a href="{% url 'to_cart' item.product.id 'remove' %}">Olib tashlash</a>
+<hr>
+{% empty %}
+<p>Savatcha bo'sh</p>
+{% endfor %}
+
+{% if items %}
+<h3>Umumiy summa: {{ total }}</h3>
+<a href="{% url 'checkout' %}">Buyurtma berish</a>
+{% endif %}

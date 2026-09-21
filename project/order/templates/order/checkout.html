@@ -1,0 +1,13 @@
+<h1>Buyurtmani rasmiylashtirish</h1>
+
+{% for item in items %}
+<p>{{ item.product.title }} — {{ item.quantity }} x {{ item.product.price }} = {{ item.get_price }}</p>
+{% endfor %}
+<h3>Umumiy summa: {{ total }}</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="address" placeholder="Manzil" maxlength="255" required>
+    <button type="submit">Tasdiqlash</button>
+</form>
+<a href="{% url 'cart' %}">Ortga</a>
